@@ -1,0 +1,119 @@
+.profile-card {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+  display: none;
+}
+
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #58a6ff, #8a63ff);
+}
+
+.profile-header {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent);
+  box-shadow: 0 4px 15px rgba(3, 102, 214, 0.3);
+  transition: var(--transition);
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(3, 102, 214, 0.4);
+}
+
+.profile-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.username {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.github-icon {
+  color: var(--light-text);
+  font-size: 1.2rem;
+}
+
+.bio {
+  color: var(--light-text);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.tier-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tier-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tier-novice {
+  background-color: rgba(46, 164, 79, 0.2);
+  color: #2ea44f;
+}
+
+.tier-intermediate {
+  background-color: rgba(0, 92, 197, 0.2);
+  color: #005cc5;
+}
+
+.tier-expert {
+  background-color: rgba(111, 66, 193, 0.2);
+  color: #6f42c1;
+}
+
+.tier-master {
+  background-color: rgba(203, 36, 49, 0.2);
+  color: #cb2431;
+}
+
+.personalized-quote {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: rgba(240, 246, 252, 0.05);
+  border-radius: 10px;
+  border-left: 4px solid var(--accent);
+  font-style: italic;
+  color: var(--light-text);
+  line-height: 1.6;
+}
