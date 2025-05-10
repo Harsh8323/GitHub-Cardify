@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Profile Card Generator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/searchBar.css" />
+    <link rel="stylesheet" href="./css/profileCard.css" />
+    <link rel="stylesheet" href="./css/statsCard.css" />
+  </head>
+  <body>
+    <header>
+      <h1>GitHub Profile Card</h1>
+      <p class="subtitle">
+        Generate a beautiful profile card with your GitHub stats
+      </p>
+      <div class="search-container">
+        <input
+          type="text"
+          id="username-input"
+          placeholder="Enter GitHub username"
+        />
+        <button id="search-btn"><i class="fas fa-search"></i> Search</button>
+      </div>
+      <div class="error-message" id="error-message"></div>
+    </header>
+
+    <div class="main-content">
+      <div class="profile-section">
+        <div class="loading" id="loading"></div>
+        <div class="profile-card" id="profile-card">
+          <div class="profile-header">
+            <img
+              src="https://via.placeholder.com/120"
+              alt="Profile Picture"
+              class="profile-pic"
+              id="profile-pic"
+            />
+            <div class="profile-info">
+              <h2 class="username" id="username">
+                <i class="fab fa-github github-icon"></i>
+                <span id="username-text">GitHubUser</span>
+              </h2>
+              <p class="bio" id="bio">Loading profile information...</p>
+              <div class="tier-container">
+                <span class="tier-badge" id="tier-badge">
+                  <i class="fas fa-star"></i>
+                  <span id="tier-text">Loading...</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-container" id="stats-container">
+            <!-- Stats will be populated here -->
+          </div>
+
+          <div class="personalized-quote" id="personalized-quote">
+            <!-- Personalized quote will be added here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
