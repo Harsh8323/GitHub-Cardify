@@ -13,4 +13,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const tierText = document.getElementById("tier-text");
   const statsContainer = document.getElementById("stats-container");
   const personalizedQuote = document.getElementById("personalized-quote");
+
+  // event listeners
+  searchBtn.addEventListener("click", fetchGItHubProfile);
+  userNameInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      fetchGItHubData();
+    }
+  });
+
+  function fetchGItHubData() {
+    //gets github data
+    const userName = userNameInput.ariaValueMax.trim();
+    if (!userName) {
+      showErrorMessage("Please enter a GittHub username");
+      return;
+    }
+
+    try {
+      await;
+    } catch (error) {
+      showErrorMessage(error.message);
+    }
+  }
+
+  function displayProflieCard() {
+    // displays github profile card
+  }
+
+  function showErrorMessage(message) {
+    // shows error message
+
+    errorMessage.textContent = message;
+    errorMessage.style.display = "block";
+    profileCard.style.display = "none";
+  }
 });
