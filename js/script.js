@@ -16,34 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // event listeners
   searchBtn.addEventListener("click", fetchGItHubProfile);
-  userNameInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      fetchGItHubData();
-    }
-  });
+  const userName = userNameInput.value.trim();
+  if (!userName) return;
 
-  function fetchGItHubData() {
-    //gets github data
-    const userName = userNameInput.ariaValueMax.trim();
-    if (!userName) {
-      showErrorMessage("Please enter a GittHub username");
-      return;
-    }
-
-    try {
-      await;
-    } catch (error) {
-      showErrorMessage(error.message);
-    }
+  try {
+    fetchGItHubProfile();
+  } catch (error) {
+    showError();
   }
 
-  function displayProflieCard() {
-    // displays github profile card
+  function fetchGItHubProfile() {
+    //
   }
 
-  function showErrorMessage(message) {
+  function displayGitHubProfile() {}
+
+  function showError(message) {
     // shows error message
-
     errorMessage.textContent = message;
     errorMessage.style.display = "block";
     profileCard.style.display = "none";
