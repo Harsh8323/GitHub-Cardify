@@ -59,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!repoResponse.ok) {
           throw new Error("Error fetching repositories.");
         }
-        const reposPage = await response.json();
+        const reposPage = await repoResponse.json();
         repos = repos.concat(reposPage);
-        if (reposPage.length < 100) break; // No more pages
+        if (reposPage.length < 100) break;
         page++;
 
         displayProfileData({
@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
         profileCard.style.display = "block";
       }
     } catch (error) {
-      // console.error("Error fetching GitHub profile:", error);
       displayError("Failed to fetch GitHub profile. Please try again.");
       loading.style.display = "none";
       displayError(error.message);
@@ -92,11 +91,11 @@ document.addEventListener("DOMContentLoaded", () => {
     profileCard.style.display = "none"; // Hide profile card
   }
 
-  function displayProfileData(user, totalRepos) {
-    profilePic.src = user.avatar_url;
-    usernameText.textContent = user.login;
+  function displayProfileData(user) {
+    profilePic.src = user.avatarUrl;
+    usernameText.textContent = user.name || user.username;
     bio.textContent = user.bio || "No bio available";
-    const tier = determineTier(totalRepos);
+    const tier = determineTier(user.totalRepos);
     tierText.textContent = tier.name;
     tierBadge.className = "tier-badge";
     tierBadge.classList.add(`tier-${tier.id.toLowerCase()}`);
@@ -107,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const stats = [
       { label: "Followers", value: user.followers },
       { label: "Following", value: user.following },
-      { label: "Total Reposoitories", value: user.totalRepos },
+      { label: "Total Repositories", value: user.totalRepos },
     ];
 
     stats.forEach((stat) => {
@@ -119,8 +118,35 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       statsContainer.appendChild(statCard);
     });
-    // generatePersonalizedQuote(user.login, totalRepos);
-    // profileCard.style.display = "block";
+    generatePersonalizedQuote(user.username, user.totalRepos);
+    profileCard.style.display = "block";
+  }
+  function determineTier(repoCount) {
+    // Tier based on repository count
+
+    if (repoCount >= 50) {
+      return { id: "Master", name: "Master" };
+    } else if (repoCount >= 20) {
+      return { id: "Expert", name: "Expert" };
+    } else if (repoCount >= 5) {
+      return { id: "Intermediate", name: "Intermediate" };
+    } else {
+      return { id: "Novice", name: "Novice" };
+    }
+  }
+  function generatePersonalizedQuote(user) {
+    let quote = "";
+
+    if (user.totalRepos >= 50) {
+      quote = `"${user.username} is a prolific developer with ${user.totalRepos} repositories! Their contributions to the open-source community are truly impressive."`;
+    } else if (user.totalRepos >= 20) {
+      quote = `"With ${user.totalRepos} repositories, ${user.username} is clearly an active contributor to the developer community. Keep up the great work!"`;
+    } else if (user.totalRepos >= 5) {
+      quote = `"${user.username} is building their developer portfolio with ${user.totalRepos} repositories. Every project is a step forward in their coding journey!"`;
+    } else {
+      quote = `"${user.username} is just getting started with ${user.totalRepos} repositories. The journey of a thousand repositories begins with a single commit!"`;
+    }
+    personalizedQuote.textContent = quote;
   }
 
   function showLoading() {
