@@ -63,21 +63,21 @@ document.addEventListener("DOMContentLoaded", () => {
         repos = repos.concat(reposPage);
         if (reposPage.length < 100) break;
         page++;
-
-        displayProfileData({
-          username: userData.login,
-          name: userData.name || userData.login,
-          avatarUrl: userData.avatar_url,
-          bio: userData.bio || "No bio available",
-          followers: userData.followers,
-          following: userData.following,
-          publicRepos: userData.public_repos,
-          totalRepos: repos.length,
-        });
-
-        loading.style.display = "none";
-        profileCard.style.display = "block";
       }
+
+      displayProfileData({
+        username: userData.login,
+        name: userData.name || userData.login,
+        avatarUrl: userData.avatar_url,
+        bio: userData.bio || "No bio available",
+        followers: userData.followers,
+        following: userData.following,
+        publicRepos: userData.public_repos,
+        totalRepos: repos.length,
+      });
+
+      loading.style.display = "none";
+      profileCard.style.display = "block";
     } catch (error) {
       displayError("Failed to fetch GitHub profile. Please try again.");
       loading.style.display = "none";
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       statsContainer.appendChild(statCard);
     });
-    generatePersonalizedQuote(user.username, user.totalRepos);
+    generatePersonalizedQuote(user);
     profileCard.style.display = "block";
   }
   function determineTier(repoCount) {
