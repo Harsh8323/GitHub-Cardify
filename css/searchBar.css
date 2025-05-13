@@ -45,7 +45,6 @@ h1 {
 #username-input:focus {
   box-shadow: 0 0 0 2px #8a63ff;
 }
-
 #search-btn {
   padding: 0.8rem 1.5rem;
   background-color: var(--accent);
@@ -61,6 +60,9 @@ h1 {
   gap: 0.5rem;
 }
 
+#search-btn span {
+  display: inline; /* Ensure the text is displayed normally */
+}
 #search-btn:hover {
   background: linear-gradient(90deg, #58a6ff, #8a63ff);
   color: white;
